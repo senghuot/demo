@@ -2,26 +2,35 @@
 <html data-ng-app="demo">
   
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="decription" content="">
-    <meta name="viewport" content="width=device-width">
-    
+    <meta charset="UTF-8">
+    <title>demo</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/bootstrap-material/dist/css/roboto.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap-material/dist/css/material-fullpalette.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap-material/dist/css/ripples.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular/angular-resource.js"></script>
-    <script src="/js/controllers/meetups-controller.js"></script>
-    <title>demo</title>
+    <script src="/js/controllers/meetups-controller.js"></script>   
   </head>
 
-  <body ng-controller="meetupsController">
-    <h1>There are {{meetups.length}} meetups.</h1>
-    
-    <li ng-repeat="meetup in meetups"><ul>{{meetup.name}}</ul></li>
+  <body class="container" ng-controller="meetupsController">
+    <h1>Upload a raw file onto DB</h1>
+    <span class="btn btn-primary btn-file btn-raised">
+        Browse <input type="file">
+    </span>
 
-    <form ng-submit="createMeetup()">
+    <h1>Current files on DB</h1>
+    <ul>
+      <li>Coffee</li>
+    </ul>
+
+<!--     <form ng-submit="createMeetup()">
       <input type="text" placeholder="Meetup Name" ng-model="meetupName">
       <button type="submit">Add</button>
     </form>
-
+ -->
+ 
   </body>
 </html>
