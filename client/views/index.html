@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html data-ng-app="demo">
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="decription" content="">
+    <meta name="viewport" content="width=device-width">
+    
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular/angular-resource.js"></script>
+    <script src="/js/controllers/meetups-controller.js"></script>
+    <title>demo</title>
+  </head>
+
+  <body ng-controller="meetupsController">
+    <h1>There are {{meetups.length}} meetups.</h1>
+    
+    <li ng-repeat="meetup in meetups"><ul>{{meetup.name}}</ul></li>
+
+    <form ng-submit="createMeetup()">
+      <input type="text" placeholder="Meetup Name" ng-model="meetupName">
+      <button type="submit">Add</button>
+    </form>
+
+  </body>
+</html>
