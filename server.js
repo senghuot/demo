@@ -1,5 +1,6 @@
 var express           = require('express'),
     app               = express(),
+    zlib              = require('zlib'),
     bodyParser        = require('body-parser'),
     mongoose          = require('mongoose'),
     fs                = require('fs'),
@@ -18,22 +19,28 @@ Grid.mongo = mongoose.mongo;
 conn.once('open', function() {
   var gfs = Grid(conn.db);
 
-  // writing some files into db
-  var writeStream = gfs.createWriteStream({
-    filename: '332.pdf'
-  });
-  fs.createReadStream('files/332.pdf').pipe(writeStream);
-  writeStream.on('close', function() {console.log('finished.')})
+  // to remove a file  
+  // gfs.remove({_id: "55c8d8d2bbc3df0c3622ebf1"}, function(err) {
+  //   if (err) console.log(err);
+  //   else console.log('success');
+  // });
+
+  // // writing some files into db
+  // var writeStream = gfs.createWriteStream({
+  //   filename: '332.pdf'
+  // });
+  // fs.createReadStream('files/332.pdf').pipe(writeStream);
+  // writeStream.on('close', function() {console.log('finished.')})
 
   // // write content to file system
-  // var writeStream = fs.createWriteStream('java.pdf');
+  var writeStream = fs.createWriteStream('332.pdf');
 
-  // // read from mongodb
-  // var readStream = gfs.createReadStream({filename: 'java.pdf'});
-  // readStream.pipe(writeStream);
-  // writeStream.on('close', function() {
-  //   console.log('done');
-  // });
+  // read from mongodb
+  var readStream = gfs.createReadStream({filename: '332.pdf'});
+  readStream.pipe(writeStream);
+  writeStream.on('close', function() {
+    console.log('done');
+  });
 
 });
 
