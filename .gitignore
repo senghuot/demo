@@ -2,6 +2,10 @@
 bower_components
 node_modules
 
+#Random
+files
+
+
 # OS
 # ===========
 .DS_Store
